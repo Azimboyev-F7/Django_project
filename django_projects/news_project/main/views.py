@@ -5,13 +5,9 @@ from .models import New, Worker
 # Create your views here.
 
 def index(request):
-    new = New.objects.get(id=1)
-    new_1 = New.objects.get(id=2)
-    new_2 = Worker.objects.get(id=1)
+    new = New.objects.all()
     context = {
         "new": new,
-        "new_1": new_1,
-        "new_2": new_2,
     }
     return render(request, "index.html", context)
 
@@ -22,3 +18,13 @@ def blog(request):
         "new": new,
     }
     return render(request, "blogs.html", context)
+
+
+def detail(request,pk):
+    new = New.objects.get(id=pk)
+    context = {
+        "object": new,
+
+    }
+
+    return render(request, "detail.html", context)

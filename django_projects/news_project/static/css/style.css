@@ -1,22 +1,82 @@
-/* styles.css */
+/* Background Styling with a Dark Overlay */
 body {
-    background-color: #f8f9fa; /* Light background color */
+    font-family: Arial, sans-serif;
+    /*background: url("{% static 'images/news.png' %}") no-repeat center center fixed;*/
+    background-size: cover;
+    position: relative;
+    color: white; /* Text should be readable on dark background */
+    margin: 0;
+    padding: 0;
 }
 
+/* Adding a Dark Overlay */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* 60% dark overlay */
+    z-index: -1;
+}
+
+/* Centering the Content */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full screen height */
+    text-align: center;
+    position: relative; /* Ensure content is above the overlay */
+}
+
+/* Heading Styling */
 h1 {
-    color: #343a40; /* Darker text color */
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #f8f9fa; /* Light gray */
 }
 
+/* Blockquote Styling */
 .blockquote {
-    background-color: #e9ecef; /* Light gray background for blockquote */
-    border-left: 5px solid #007bff; /* Blue left border */
-    padding: 10px 20px; /* Padding for blockquote */
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffc107; /* Bootstrap warning color */
 }
 
-.blockquote-footer {
-    margin-top: 10px; /* Space above the footer */
+/* Home Link Styling */
+.blockquote-footer a {
+    text-decoration: none;
+    color: #28a745; /* Bootstrap green */
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
 }
 
-.btn-primary {
-    margin-top: 20px; /* Space above the button */
+.blockquote-footer a:hover {
+    color: #218838; /* Darker green on hover */
 }
+
+/* Centering the Button */
+.turn {
+    display: inline;
+    font-size: 15px;
+    text-decoration: none;
+    color: rgba(37, 37, 53, 0.61); /* White text */
+    background-color: rgba(37, 37, 53, 0.61); /* Bootstrap primary blue */
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px; /* Adds space between card and the link */
+    text-align: center;
+}
+
+.turn:hover {
+    background-color: rgba(16, 45, 117, 0.38); /* Darker blue on hover */
+    transform: scale(1.05);
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
