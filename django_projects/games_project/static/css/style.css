@@ -1,20 +1,19 @@
-/**************** extend css start ****************/
 @import url("https://fonts.googleapis.com/css?family=Aclonica|Poppins:300,400,500,600&amp;display=swap");
+
+{% load static %}
+/**************** extend css start ****************/
+
 /* line 2, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_extends.scss */
-.btn_1, .live_stareams .live_stareams_slide .live_stareams_slide_img:after, .Latest_War .Latest_War_text:after, .gallery_part .single_gallery_item .single_gallery_item_iner:after, .footer_part .single_footer_part .mail_part .email_icon {
-  background-image: -webkit-gradient(linear, right top, left top, from(#ff0000), color-stop(51%, #c6019a), to(#ff0000));
-  background-image: -webkit-linear-gradient(right, #ff0000 0%, #c6019a 51%, #ff0000 100%);
-  background-image: -o-linear-gradient(right, #ff0000 0%, #c6019a 51%, #ff0000 100%);
-  background-image: linear-gradient(to left, #ff0000 0%, #c6019a 51%, #ff0000 100%);
+/* Apply gradient properly */
+.btn_1, .live_streams, .live_streams_slide img:after, .Latest_War, .Latest_War_text:after {
+    background-image: linear-gradient(to left, #ff0000 0%, #c6019a 51%, #ff0000 100%);
 }
 
-/* line 8, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_extends.scss */
+/* Corrected gradient for .main_menu .main-menu-item .nav-item a:before */
 .main_menu .main-menu-item .nav-item a:before {
-  background-image: -webkit-gradient(linear, right top, left top, from(#c6019a), to(#ff0000));
-  background-image: -webkit-linear-gradient(right, #c6019a 0%, #ff0000 100%);
-  background-image: -o-linear-gradient(right, #c6019a 0%, #ff0000 100%);
-  background-image: linear-gradient(to left, #c6019a 0%, #ff0000 100%);
+    background-image: linear-gradient(to left, #c6019a 0%, #ff0000 100%);
 }
+
 
 /* line 14, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_extends.scss */
 
@@ -404,7 +403,7 @@ ul {
 
 /* line 247, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_common.scss */
 .body_bg {
-  background-image: url("../img/body_bg.png");
+  background-image: url("/static/image/body_bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2062,7 +2061,7 @@ ul {
 /* line 2, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_banner.scss */
 .banner_part {
   position: relative;
-  background-image: url(../img/banner_bg.png);
+  background-image: url("static/image/banner_bg.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
@@ -2206,9 +2205,7 @@ ul {
 .live_stareams {
   position: relative;
   z-index: 99;
-  background: url(../img/live_stareams_bg.png);
-  background-position: center;
-  background-repeat: no-repeat;
+  background: url("static/image/live_stareams_bg.png") no-repeat center;
   background-size: contain;
   padding: 140px 0 190px;
   overflow: hidden;
@@ -2273,7 +2270,7 @@ ul {
   top: -38px;
   width: 100%;
   height: 100%;
-  background-image: url(../img/Shape_text.png);
+  background-image: url("static/image/Shape_text.png");
   background-repeat: no-repeat;
   z-index: 1;
 }
@@ -2385,7 +2382,7 @@ ul {
 
 /* line 3, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_Latest_War.scss */
 .Latest_War .Latest_War_text {
-  background-image: url("../img/latest_war_img.png");
+  background-image: url("static/image/latest_war_img.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2448,7 +2445,7 @@ ul {
 
 /* line 54, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_Latest_War.scss */
 .Latest_War .Latest_War_bg_1 {
-  background-image: url("../img/latest_war_img_1.png");
+  background-image: url("static/image/latest_war_img_1.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2757,7 +2754,7 @@ ul {
 /**************** upcomming war css start ****************/
 /* line 2, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_upcomming_war.scss */
 .upcomming_war {
-  background-image: url(../img/event_bg.png);
+  background-image: url("static/image/event_bg.png");
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -3138,7 +3135,7 @@ ul {
   background-color: #0b111f;
   position: relative;
   z-index: 1;
-  background-image: url(../img/pricing_bg.png);
+  background-image: url("static/image/pricing_bg.png");
   background-position: top;
   background-size: contain;
   background-repeat: no-repeat;
@@ -3709,7 +3706,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 188, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
 .genric-btn.arrow {
-  display: -webkit-inline-box;
+  display: inline;
   display: -ms-inline-flexbox;
   display: inline-flex;
   -webkit-box-align: center;
@@ -3920,7 +3917,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 339, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
 .genric-btn.disable {
-  color: #222222, 0.3;
+  color: #222222;
   background: #f9f9ff;
   border: 1px solid transparent;
   cursor: not-allowed;
@@ -4489,7 +4486,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 798, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
 .primary-checkbox input:checked + label {
-  background: url(../img/elements/primary-check.png) no-repeat center center/cover;
+  background: url("static/image/elements/primary-check.png") no-repeat center center/cover;
   border: none;
 }
 
@@ -4531,7 +4528,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 835, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
 .confirm-checkbox input:checked + label {
-  background: url(../img/elements/success-check.png) no-repeat center center/cover;
+  background: url("static/image/elements/success-check.png") no-repeat center center/cover;
   border: none;
 }
 
@@ -4579,7 +4576,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 876, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
 .disabled-checkbox input:checked + label {
-  background: url(../img/elements/disabled-check.png) no-repeat center center/cover;
+  background: url("static/image/elements/disabled-check.png") no-repeat center center/cover;
   border: none;
 }
 
@@ -4621,7 +4618,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 913, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
 .primary-radio input:checked + label {
-  background: url(../img/elements/primary-radio.png) no-repeat center center/cover;
+  background: url("static/image/elements/primary-radio.png") no-repeat center center/cover;
   border: none;
 }
 
@@ -4663,7 +4660,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 950, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
 .confirm-radio input:checked + label {
-  background: url(../img/elements/success-radio.png) no-repeat center center/cover;
+  background: url("static/image/elements/success-radio.png") no-repeat center center/cover;
   border: none;
 }
 
@@ -4711,7 +4708,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 991, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
 .disabled-radio input:checked + label {
-  background: url(../img/elements/disabled-radio.png) no-repeat center center/cover;
+  background: url("static/image/elements/disabled-radio.png") no-repeat center center/cover;
   border: none;
 }
 
@@ -4797,10 +4794,10 @@ h1, h2, h3, h4, h5, h6 {
 .form-select .nice-select .list {
   margin-top: 0;
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: none;
   width: 100%;
-  padding: 10px 0 10px 0px;
+  padding: 10px 0 10px;
 }
 
 /* line 1060, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
@@ -5110,7 +5107,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 1, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_breadcrumb.scss */
 .breadcrumb_bg {
-  background-image: url("../img/breadcrumb.png");
+  background-image: url("static/image/breadcrumb.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
