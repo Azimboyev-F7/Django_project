@@ -403,7 +403,7 @@ ul {
 
 /* line 247, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_common.scss */
 .body_bg {
-  background-image: url("/static/image/body_bg.png");
+  background-image: url("../image/banner_bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
