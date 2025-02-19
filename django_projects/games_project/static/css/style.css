@@ -189,6 +189,11 @@ p {
   font-weight: 300;
 }
 
+.ryzenn {
+  height: 100px;
+  font-weight: 30;
+}
+
 /* line 99, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_common.scss */
 h2 {
   font-size: 44px;
