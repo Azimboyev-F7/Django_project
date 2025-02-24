@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block header %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            background: url("{% static 'image/news.png' %}") no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+    <div class="container">
+
+
+        <div class="row">
+            <h1>Hello this is NEWS site if you're interested in news then click here |</h1>
+            <figure>
+                <blockquote class="blockquote">
+                    <p>WELCOME TO HOME PAGE</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                    <a href="">home/</a>
+                </figcaption>
+            </figure>
+
+            <div class="turn">
+                <a href="{% url 'main:blogs' %}">Turn to News</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

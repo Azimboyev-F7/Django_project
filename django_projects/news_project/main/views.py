@@ -9,7 +9,7 @@ def index(request):
     context = {
         "new": new,
     }
-    return render(request, "index.html", context)
+    return render(request, "article/index.html", context)
 
 
 def blog(request):
@@ -17,7 +17,7 @@ def blog(request):
     context = {
         "new": new,
     }
-    return render(request, "blogs.html", context)
+    return render(request, "article/blogs.html", context)
 
 
 def detail(request,pk):
@@ -27,4 +27,4 @@ def detail(request,pk):
 
     }
 
-    return render(request, "detail.html", context)
+    return render(request, "article/detail.html", context)
