@@ -9,7 +9,7 @@
     display: block;
     font-size: 18px;
     text-decoration: none;
-    color: red; /* White text */
+    color: #dddddd; /* White text */
     background-color: #007bff; /* Bootstrap primary blue */
     padding: 10px 20px;
     border-radius: 8px;
@@ -25,6 +25,3 @@
     box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.p-home {
-    color: #dddddd;
-}
