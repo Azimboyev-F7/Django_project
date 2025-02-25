@@ -12,13 +12,25 @@
 
 
         <div class="row">
+            <div class="row">
+                <div class="col">
+                    <form class="form-control d-flex my-3 gap-2" action="{% url 'blogs/' %}" method="get",>
+                        <input type="search" class="form-control" name="q" placeholder="search ...">
+                        <button type="submit" class="btn btn-success">submit</button>
+                    </form>
+                </div>
+            </div>
             {% for ne in new %}
                 <div class="col-md-4">
                     <div class="card bg-light border border-secondary hover-effect" style="width: 18rem;">
-                        <img src="{{ ne.image.url }}" alt="...">
+                        {% if ne.image %}
+                            <img src="{{ ne.image.url }}" alt="...">
+                        {% else %}
+                            <h2 class="text-danger">No image</h2>
+                        {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{ ne.title }}</h5>
-                            <p class="card-text">{{ ne.content }}</p>
+                            <p class="card-text">{{ ne.content | slice:":300" }}</p>
                             <a href="{% url 'main:detail' ne.id %}" class="btn btn-primary">ABOUT IT</a>
                         </div>
                     </div>

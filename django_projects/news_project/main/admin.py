@@ -8,6 +8,10 @@ class NewAdmin(admin.ModelAdmin):
     list_display_links = ('title',)
     list_max_show_all = 100
     list_per_page = 5
+    search_fields = ('id', 'title')
+    date_hierarchy = 'created_at'
+    ordering = ('-id', )
+    readonly_fields = ('created_at', 'updated_at')
 
 
 

@@ -14,6 +14,7 @@ def index(request):
 
 def blog(request):
     new = New.objects.all()
+    print(request.GET)
     context = {
         "new": new,
     }
