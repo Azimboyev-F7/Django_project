@@ -14,7 +14,13 @@ def index(request):
 
 def blog(request):
     new = New.objects.all()
-    print(request.GET)
+    query = request.GET.get('q')
+
+    if query:
+        # new = New.objects.filter(title__icontains=query)
+        # new = New.objects.filter(title__exact=query)
+        new = New.objects.filter(title__contains=query)
+
     context = {
         "new": new,
     }
