@@ -42,7 +42,7 @@
 
         <div class="site-navigation text-center">
 
-            <a href="index-2.html" class="d-block text-center float-left logo">JA</a>
+            <a href="{% url 'main:index-2' %}" class="d-block text-center float-left logo">JA</a>
 
 
             <ul class="js-clone-nav ml-0 pl-0 d-none d-lg-inline-block site-menu mx-auto text-center">
@@ -87,10 +87,10 @@
         <div class="row align-items-center justify-content-center text-center">
 
             <div class="col-lg-8">
-                <h1 class="text-white" data-aos="fade-up" data-aos-delay="0">I'm Azimov Faxriyor<br> A Front-end
+                <h1 class="text-white" data-aos="fade-up" data-aos-delay="0">I'm Azimboyev Faxriyor<br> A Back-end
                     Developer</h1>
-                <p data-aos="fade-up" data-aos-delay="100">A new work from <a href="https://colorlib/.com"
-                                                                              class="font-weight-bold" target="_blank">Colorlib</a>
+                <p data-aos="fade-up" data-aos-delay="100">my Resume <a href="https://colorlib/.com"
+                                                                              class="font-weight-bold" target="_blank">Site</a>
                 </p>
             </div>
         </div>
@@ -113,17 +113,14 @@
                     <h2>My Bio</h2>
                 </div>
 
-                <p>Far far away, behind <span class="highlight">the word mountains</span>, far from the countries
-                    Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at
-                    the coast of the Semantics, a large language ocean.</p>
+                <p>I build things with Django, turning ideas into powerful web applications. There’s something special about how Django brings structure and efficiency to development—it’s my go-to framework for crafting scalable, secure, and elegant solutions.</p>
 
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
-                    paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                <p>Lately, I’ve been diving into Python Telegram bot development, exploring how automation and messaging bots can make workflows smoother and more interactive. Whether it’s a complex web app or a smart chatbot, I love solving problems and making technology more accessible.</p>
 
 
                 <div class="my-5">
                     <div class="skill">
-                        <h3>Design</h3>
+                        <h3>Python</h3>
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85"
                                  aria-valuemin="0" aria-valuemax="100">
@@ -133,7 +130,7 @@
                     </div>
 
                     <div class="skill">
-                        <h3>HTML5</h3>
+                        <h3>Django</h3>
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 98%" aria-valuenow="98"
                                  aria-valuemin="0" aria-valuemax="100">
@@ -143,7 +140,7 @@
                     </div>
 
                     <div class="skill">
-                        <h3>CSS3</h3>
+                        <h3>DataBase</h3>
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 97%" aria-valuenow="97"
                                  aria-valuemin="0" aria-valuemax="100">
@@ -153,7 +150,7 @@
                     </div>
 
                     <div class="skill">
-                        <h3>WordPress</h3>
+                        <h3>Telegram Bot Development</h3>
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 88%" aria-valuenow="88"
                                  aria-valuemin="0" aria-valuemax="100">
@@ -195,75 +192,75 @@
         <div class="filters" data-aos="fade-up" data-aos-delay="100">
             <ul>
                 <li class="active" data-filter="*">All</li>
-                <li data-filter=".packaging">Packaging</li>
-                <li data-filter=".mockup">Mockup</li>
-                <li data-filter=".typography">Typography</li>
-                <li data-filter=".photography">Photography</li>
+                <li data-filter=".packaging">Web Apps</li>
+                <li data-filter=".mockup">APIs</li>
+                <li data-filter=".typography">Bots</li>
+                <li data-filter=".photography">Databases</li>
             </ul>
         </div>
 
         <div class="filters-content mb-5" data-aos="fade-up" data-aos-delay="200">
             <div class="row grid">
-                <div class="single-portfolio col-sm-4 all mockup">
-                    <a href="{% static 'images/work_5.jpg' %}" data-fancybox="gal">
-                        <img src="{% static 'images/work_5.jpg' %}" alt="Image" class="img-fluid">
+                <div class="single-portfolio col-sm-4 all photography">
+                    <a href="{% static 'images/admin-panel.webp' %}" data-fancybox="gal">
+                        <img src="{% static 'images/admin-panel.webp' %}" alt="Image" class="img-fluid">
                         <div class="contents">
-                            <h3>Card Vol. 3</h3>
-                            <div class="cat">Mockup</div>
+                            <h3>Admin-panel</h3>
+                            <div class="cat">django-admin-panel</div>
                         </div>
                     </a>
                 </div>
-                <div class="single-portfolio col-sm-4 all typography">
-                    <a href="{% static 'images/work_1.jpg' %}" data-fancybox="gal">
-                        <img src="{% static 'images/work_1.jpg' %}" alt="Image" class="img-fluid">
+                <div class="single-portfolio col-sm-4 all photography">
+                    <a href="{% static 'images/django-admin-panel.webp' %}" data-fancybox="gal">
+                        <img src="{% static 'images/django-admin-panel.webp' %}" alt="Image" class="img-fluid">
                         <div class="contents">
-                            <h3>House Design</h3>
+                            <h3>Django-admin-panel</h3>
                             <div class="cat">Typography</div>
                         </div>
                     </a>
                 </div>
                 <div class="single-portfolio col-sm-4 all mockup">
-                    <a href="{% static 'images/work_2.jpg' %}" data-fancybox="gal">
-                        <img src="{% static 'images/work_2.jpg' %}" alt="Image" class="img-fluid">
+                    <a href="{% static 'images/postgresl.webp' %}" data-fancybox="gal">
+                        <img src="{% static 'images/postgresl.webp' %}" alt="Image" class="img-fluid">
                         <div class="contents">
-                            <h3>WoW</h3>
-                            <div class="cat">Mockup</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="single-portfolio col-sm-4 all packaging">
-                    <a href="{% static 'images/work_3.jpg' %}" data-fancybox="gal">
-                        <img src="{% static 'images/work_3.jpg' %}" alt="Image" class="img-fluid">
-                        <div class="contents">
-                            <h3>Seat</h3>
-                            <div class="cat">Packaging</div>
+                            <h3>Postgress</h3>
+                            <div class="cat">Postgressl</div>
                         </div>
                     </a>
                 </div>
                 <div class="single-portfolio col-sm-4 all typography">
-                    <a href="{% static 'images/work_4.jpg' %}" data-fancybox="gal">
-                        <img src="{% static 'images/work_4.jpg' %}" alt="Image" class="img-fluid">
+                    <a href="{% static 'images/telegram-bot.webp' %}" data-fancybox="gal">
+                        <img src="{% static 'images/telegram-bot.webp' %}" alt="Image" class="img-fluid">
                         <div class="contents">
-                            <h3>Seat</h3>
-                            <div class="cat">Packaging</div>
+                            <h3>Chatbots</h3>
+                            <div class="cat">Telegram-bot</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="single-portfolio col-sm-4 all mockup">
+                    <a href="{% static 'images/api-documentation.webp' %}" data-fancybox="gal">
+                        <img src="{% static 'images/api-documentation.webp' %}" alt="Image" class="img-fluid">
+                        <div class="contents">
+                            <h3>API</h3>
+                            <div class="cat">Api</div>
                         </div>
                     </a>
                 </div>
                 <div class="single-portfolio col-sm-4 all photography">
-                    <a href="{% static 'images/work_6.jpg' %}" data-fancybox="gal">
-                        <img src="{% static 'images/work_6.jpg' %}" alt="Image" class="img-fluid">
+                    <a href="{% static 'images/postgress.webp' %}" data-fancybox="gal">
+                        <img src="{% static 'images/postgress.webp' %}" alt="Image" class="img-fluid">
                         <div class="contents">
-                            <h3>House Design</h3>
-                            <div class="cat">Photography</div>
+                            <h3>Postgressl</h3>
+                            <div class="cat">Postgress</div>
                         </div>
                     </a>
                 </div>
-                <div class="single-portfolio col-sm-4 all photography">
-                    <a href="{% static 'images/work_7.jpg' %}" data-fancybox="gal">
-                        <img src="{% static 'images/work_7.jpg' %}" alt="Image" class="img-fluid">
+                <div class="single-portfolio col-sm-4 all packaging">
+                    <a href="{% static 'images/logs.webp' %}" data-fancybox="gal">
+                        <img src="{% static 'images/logs.webp' %}" alt="Image" class="img-fluid">
                         <div class="contents">
-                            <h3>House Design</h3>
-                            <div class="cat">Photography</div>
+                            <h3>Logs</h3>
+                            <div class="cat">Logs</div>
                         </div>
                     </a>
                 </div>
@@ -292,9 +289,8 @@
                       d="M13.991 3H2c-.325 0-.502.078-.602.145a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3zM14 2H2C0 2 0 4 0 4v6c0 2 2 2 2 2h12c2 0 2-2 2-2V4c0-2-2-2-2-2z"/>
               </svg>
             </span>
-                    <h3 class="mb-4">Development</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
-                        live the blind texts.</p>
+                    <h3 class="mb-4">🖥️ Backend Development</h3>
+                    <p>I specialize in building scalable and efficient web applications using Django. From authentication systems to complex business logic, I ensure the backend runs smoothly, securely, and efficiently. Whether it’s a RESTful API, a custom admin panel, or a dynamic web platform, I design solutions that are fast, reliable, and maintainable.</p>
 
                 </div>
             </div>
@@ -307,9 +303,8 @@
                       d="M3 2.5A1.5 1.5 0 0 1 4.5 1h1A1.5 1.5 0 0 1 7 2.5V5h2V2.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5v2.382a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V14.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 14.5v-3a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5v3A1.5 1.5 0 0 1 5.5 16h-3A1.5 1.5 0 0 1 1 14.5V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V2.5zM4.5 2a.5.5 0 0 0-.5.5V3h2v-.5a.5.5 0 0 0-.5-.5h-1zM6 4H4v.882a1.5 1.5 0 0 1-.83 1.342l-.894.447A.5.5 0 0 0 2 7.118V13h4v-1.293l-.854-.853A.5.5 0 0 1 5 10.5v-1A1.5 1.5 0 0 1 6.5 8h3A1.5 1.5 0 0 1 11 9.5v1a.5.5 0 0 1-.146.354l-.854.853V13h4V7.118a.5.5 0 0 0-.276-.447l-.895-.447A1.5 1.5 0 0 1 12 4.882V4h-2v1.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V4zm4-1h2v-.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5V3zm4 11h-4v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14zm-8 0H2v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14z"/>
               </svg>
             </span>
-                    <h3 class="mb-4">Design</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
-                        live the blind texts.</p>
+                    <h3 class="mb-4">🔗 API Development</h3>
+                    <p>Modern applications rely on seamless data exchange. I design and develop RESTful and GraphQL APIs that are secure, scalable, and easy to integrate. Using Django REST Framework, FastAPI, and other backend technologies, I ensure efficient communication between services, databases, and frontends.</p>
 
                 </div>
             </div>
@@ -323,9 +318,8 @@
                 <path d="M0 6.5A.5.5 0 0 1 .5 6h15a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1zM.81 9c0 .035.004.07.011.105l1.201 5.604A1 1 0 0 0 3 15.5h10a1 1 0 0 0 .978-.79l1.2-5.605A.495.495 0 0 0 15.19 9h-1.011L13 14.5H3L1.821 9H.81z"/>
               </svg>
             </span>
-                    <h3 class="mb-4">eCommerce</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
-                        live the blind texts.</p>
+                    <h3 class="mb-4">🤖 Automation & Bots</h3>
+                    <p>From Telegram bots to workflow automation, I develop intelligent solutions that reduce manual effort and improve efficiency. Whether it’s a chatbot for customer interactions, a script to automate daily tasks, or a background worker handling data, I make automation work smarter and faster.</p>
 
                 </div>
             </div>
@@ -350,7 +344,7 @@
                 <h3 class="mb-5">Work Experience</h3>
                 <div class="resume-item d-flex work">
                     <div>
-                        <h4>Senior Front End Developer</h4>
+                        <h4>Backend Developer</h4>
                         <div class="d-flex">
                             <div class="d-flex resume-meta">
                   <span class="mr-3">
@@ -362,7 +356,7 @@
                         <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
                       </svg>
                     </span>
-                    <span>Facebook, Inc.</span>
+                    <span> – Facebook, Inc. </span>
                   </span>
 
                                 <span class="icon">
@@ -372,14 +366,14 @@
                             d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
                   </span>
-                                <span>San Francisco</span>
+                                <span>Uzbekistan</span>
                             </div>
                             <div></div>
                         </div>
                     </div>
                     <div class="ml-auto resume-meta">
                         <div class="clearfix">
-                            <span class="period d-block float-right"><span>Fulltime</span></span>
+                            <span class="period d-block float-right"><span>Part-time</span></span>
                         </div>
 
                         <span class="icon">
@@ -392,14 +386,14 @@
                   <rect width="2" height="2" x="11" y="6" rx=".5"/>
                 </svg>
               </span>
-                        <span>November 2019 - Present </span>
+                        <span>Nov 2019 - Present</span>
 
                     </div>
                 </div> <!-- /.resume-item -->
 
                 <div class="resume-item d-flex work">
                     <div>
-                        <h4>Front-end Engineer</h4>
+                        <h4>Django Engineer</h4>
                         <div class="d-flex">
                             <div class="d-flex resume-meta">
                   <span class="mr-3">
@@ -411,7 +405,7 @@
                         <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
                       </svg>
                     </span>
-                    <span>Google, Inc.</span>
+                    <span>EPAM, Inc.</span>
                   </span>
 
                                 <span class="icon">
@@ -421,7 +415,7 @@
                             d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
                   </span>
-                                <span>San Francisco</span>
+                                <span>Tashekent</span>
                             </div>
                             <div></div>
                         </div>
@@ -441,14 +435,14 @@
                   <rect width="2" height="2" x="11" y="6" rx=".5"/>
                 </svg>
               </span>
-                        <span>March 2015 - November 2019 </span>
+                        <span>Mar 2015 - Nov 2019 </span>
 
                     </div>
                 </div> <!-- /.resume-item -->
 
                 <div class="resume-item d-flex work">
                     <div>
-                        <h4>Web Designer</h4>
+                        <h4>Database Administrator</h4>
                         <div class="d-flex">
                             <div class="d-flex resume-meta">
                   <span class="mr-3">
@@ -470,7 +464,7 @@
                             d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
                   </span>
-                                <span>San Francisco</span>
+                                <span>Samarkand</span>
                             </div>
                             <div></div>
                         </div>
@@ -490,7 +484,7 @@
                   <rect width="2" height="2" x="11" y="6" rx=".5"/>
                 </svg>
               </span>
-                        <span>January 2010 - March 2015 </span>
+                        <span>January 2020 - Present </span>
 
                     </div>
                 </div> <!-- /.resume-item -->
@@ -498,7 +492,7 @@
 
                 <div class="resume-item d-flex work">
                     <div>
-                        <h4>Lead Front-end Engineer</h4>
+                        <h4>Software Engineer</h4>
                         <div class="d-flex">
                             <div class="d-flex resume-meta">
                   <span class="mr-3">
@@ -520,14 +514,14 @@
                             d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
                   </span>
-                                <span>San Francisco</span>
+                                <span>Kharazim</span>
                             </div>
                             <div></div>
                         </div>
                     </div>
                     <div class="ml-auto resume-meta">
                         <div class="clearfix">
-                            <span class="period d-block float-right"><span>Fulltime</span></span>
+                            <span class="period d-block float-right"><span>Part-time</span></span>
                         </div>
 
                         <span class="icon">
@@ -540,7 +534,7 @@
                   <rect width="2" height="2" x="11" y="6" rx=".5"/>
                 </svg>
               </span>
-                        <span>January 2010 </span>
+                        <span>January 2022</span>
 
                     </div>
                 </div> <!-- /.resume-item -->
@@ -563,7 +557,7 @@
                         <rect width="2" height="2" x="11" y="6" rx=".5"/>
                       </svg>
                     </span>
-                    <span>Harvard University</span>
+                    <span>INHA university</span>
                   </span>
 
 
@@ -583,7 +577,7 @@
                   <rect width="2" height="2" x="11" y="6" rx=".5"/>
                 </svg>
               </span>
-                        <span>Columbia University</span>
+                        <span>PDP University</span>
 
                     </div>
                 </div> <!-- /.resume-item -->
@@ -602,7 +596,7 @@
                         <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
                       </svg>
                     </span>
-                    <span>Columbia University</span>
+                    <span>PDP University</span>
                   </span>
 
 
@@ -623,7 +617,7 @@
                   <rect width="2" height="2" x="11" y="6" rx=".5"/>
                 </svg>
               </span>
-                        <span>March 2015 - November 2019 </span>
+                        <span>March 2020 - November 2024 </span>
 
                     </div>
                 </div> <!-- /.resume-item -->
