@@ -35,3 +35,6 @@ def detail(request,pk):
     }
 
     return render(request, "article/detail.html", context)
+
+def create(request):
+    return render(request, "article/create.html")

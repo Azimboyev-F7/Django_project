@@ -5,12 +5,18 @@
 
 {% block header %}
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <h1 style="color: #ff5733">Article list</h1>
 {% endblock %}
 
 {% block content %}
     <div class="container">
 
+        <div class="row">
+            <div class="col-md-4 offset-4 d-flex justify-content-center ">
+            <a class="btn btn-success" type="submit">Add Article</a>
 
+            </div>
+        </div>
         <div class="row">
             <div class="row">
                 <div class="col-8 my-3">
