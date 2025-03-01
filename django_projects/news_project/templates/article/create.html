@@ -6,5 +6,40 @@
 {% endblock %}
 
 {% block content %}
+    <div class="container">
 
+
+        <div class="row">
+            <figure>
+                <blockquote class="blockquote">
+                    <p>Create Page</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                    <a href="{% url 'main:blogs' %}">home</a> / <span>create</span>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleInputTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" name="title" id="exampleInputTitle" aria-describedby="emailHelp">
+                        {#                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>#}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputContent" class="form-label">Password</label>
+                        <input type="text" class="form-control" name="content" id="exampleInputContent">
+                    </div>
+                    <div class="mb-3">
+                        <input type="file" class="form-image" name="image" id="exampleImage">
+                        <label class="form-check-label" for="exampleImage">No image</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}

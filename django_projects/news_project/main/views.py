@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import New, Worker
 
@@ -37,4 +38,12 @@ def detail(request,pk):
     return render(request, "article/detail.html", context)
 
 def create(request):
-    return render(request, "article/create.html")
+
+    if request.method == "POST":
+        New.objects.create(title=request.POST['title'], content=request.POST['content'])
+        return HttpResponse(content="Article created successfully <a href='../'>Go home</a>")
+
+    context = {
+        "object_list" : New.objects.all()
+    }
+    return render(request, "article/create.html", context)

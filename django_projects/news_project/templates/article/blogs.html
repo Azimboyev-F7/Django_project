@@ -5,16 +5,17 @@
 
 {% block header %}
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    <h1 style="color: #ff5733">Article list</h1>
 {% endblock %}
 
 {% block content %}
     <div class="container">
 
         <div class="row">
-            <div class="col-md-4 offset-4 d-flex justify-content-center ">
-            <a class="btn btn-success" type="submit">Add Article</a>
+            <h1 style="color: #ff5733">Article list</h1>
+            <p>Article List page</p>
 
+            <div class="col-md-4 offset-4 d-flex justify-content-center ">
+                <a class="btn btn-success" type="submit" href="{% url 'main:create' %}">Add Article</a>
             </div>
         </div>
         <div class="row">
@@ -30,26 +31,26 @@
                 </div>
             </div>
             {% if new %}
-            	{% for ne in new %}
-                <div class="col-md-4">
-                    <div class="card bg-light border border-secondary hover-effect" style="width: 18rem;">
-                        {% if ne.image %}
-                            <img src="{{ ne.image.url }}" alt="...">
-                        {% else %}
-                            <h2 class="text-danger">No image</h2>
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ ne.title }}</h5>
-                            <p class="card-text">{{ ne.content | slice:":300" }}</p>
-                            <a href="{% url 'main:detail' ne.id %}" class="btn btn-primary">ABOUT IT</a>
+                {% for ne in new %}
+                    <div class="col-md-4">
+                        <div class="card bg-light border border-secondary hover-effect" style="width: 18rem;">
+                            {% if ne.image %}
+                                <img src="{{ ne.image.url }}" alt="...">
+                            {% else %}
+                                <h2 class="text-danger">No image</h2>
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ ne.title }}</h5>
+                                <p class="card-text">{{ ne.content | slice:":300" }}</p>
+                                <a href="{% url 'main:detail' ne.id %}" class="btn btn-primary">ABOUT IT</a>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Back to Home button -->
-                    {#                <a href="index.html" class="back-home"> Back to Home</a>#}
-                </div>
-            {% endfor %}
-                {% else %}
+                        <!-- Back to Home button -->
+                        {#                <a href="index.html" class="back-home"> Back to Home</a>#}
+                    </div>
+                {% endfor %}
+            {% else %}
                 <h2>No found</h2>
             {% endif %}
             <div>
