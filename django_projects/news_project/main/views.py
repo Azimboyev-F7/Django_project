@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import New, Worker
 
 
@@ -47,3 +47,17 @@ def create(request):
         "object_list" : New.objects.all()
     }
     return render(request, "article/create.html", context)
+
+
+def delete(request,pk):
+    new = New.objects.get(id=pk)
+
+    if request.method == "POST":
+        new.delete()
+        return redirect('main:blogs')
+
+    context = {
+        "object": new,
+    }
+
+    return render(request, "article/delete.html", context)
