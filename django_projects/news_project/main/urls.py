@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, blog, detail, create, delete
+from .views import index, blog, detail, create, delete, update
 
 app_name = 'main'
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path("blogs/<int:pk>", detail, name="detail"),
     path("create/", create, name="create"),
     path("blogs/delete/<int:pk>", delete, name="delete"),
+    path("blogs/update/<int:pk>", update, name="update"),
 ]

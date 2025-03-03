@@ -1,7 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import New, Worker
 from .forms import NewsForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -56,6 +57,7 @@ def create(request):
         form = NewsForm(request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request, "Article successfully created")
             return redirect('main:blogs')
     context = {
         "object_list" : New.objects.all(),
@@ -69,6 +71,7 @@ def delete(request,pk):
 
     if request.method == "POST":
         new.delete()
+        messages.error(request, "Article successfully deleted")
         return redirect('main:blogs')
 
     context = {
@@ -76,3 +79,20 @@ def delete(request,pk):
     }
 
     return render(request, "article/delete.html", context)
+
+def update(request,pk):
+    object = get_object_or_404(New,id=pk)
+    form = NewsForm(instance=object)
+    if request.method == "POST":
+        form = NewsForm(request.POST, files=request.FILES, instance=object)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Article successfully updated")
+            return redirect('main:blogs')
+
+    context = {
+        "object": object,
+        "form": form
+
+    }
+    return render(request, "article/update.html", context)

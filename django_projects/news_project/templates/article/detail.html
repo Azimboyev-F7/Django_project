@@ -7,29 +7,28 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>ARTICLE DETAIL PAGE</h1>
-                <a href="{% url 'main:blogs' %}">Article</a> / <span>detail</span>
-            </div>
-            <div class="col-12">
-                {% if object.image %}
-                    <img src="{{ object.image.url }}" alt="">
-                    {% else %}
-                    <h2 class="text-danger">No Image</h2>
-                {% endif %}
-                <hr>
-                <h3>{{ object.title }}</h3>
-                <p>{{ object.content }}</p>
-            </div>
+    <div class="row">
+        <div class="col-12">
+            <h1>ARTICLE DETAIL PAGE</h1>
+            <a href="{% url 'main:blogs' %}">Article</a> / <span>detail</span>
         </div>
+        <div class="col-12">
+            {% if object.image %}
+                <img src="{{ object.image.url }}" alt="">
+            {% else %}
+                <h2 class="text-danger">No Image</h2>
+            {% endif %}
+            <hr>
+            <h3>{{ object.title }}</h3>
+            <p>{{ object.content }}</p>
+        </div>
+    </div>
 
     <div class="row">
         <div class="co-md-4">
             <a href="{% url 'main:delete' object.id %}" class="btn btn-danger">Remove Article</a>
         </div>
     </div>
-    </div>
+
 {% endblock %}
 

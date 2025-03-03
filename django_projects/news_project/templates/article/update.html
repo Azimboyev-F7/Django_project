@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block header %}
+    <h1 class="text-info">Update Article</h1>
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'main:blogs' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+    </form>
+{% endblock %}
