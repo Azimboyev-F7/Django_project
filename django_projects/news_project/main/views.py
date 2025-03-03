@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import New, Worker
+from .forms import NewsForm
 
 
 # Create your views here.
@@ -37,14 +38,28 @@ def detail(request,pk):
 
     return render(request, "article/detail.html", context)
 
+# def createe(request):
+#
+#     if request.method == "POST":
+#         New.objects.create(title=request.POST['title'], content=request.POST['content'])
+#         return HttpResponse(content="Article created successfully <a href='../'>Go home</a>")
+#
+#     context = {
+#         "object_list" : New.objects.all()
+#     }
+#     return render(request, "article/create.html", context)
+
 def create(request):
+    form = NewsForm()
 
     if request.method == "POST":
-        New.objects.create(title=request.POST['title'], content=request.POST['content'])
-        return HttpResponse(content="Article created successfully <a href='../'>Go home</a>")
-
+        form = NewsForm(request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('main:blogs')
     context = {
-        "object_list" : New.objects.all()
+        "object_list" : New.objects.all(),
+        'form': form
     }
     return render(request, "article/create.html", context)
 
