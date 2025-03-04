@@ -93,6 +93,5 @@ def update(request,pk):
     context = {
         "object": object,
         "form": form
-
     }
     return render(request, "article/update.html", context)
