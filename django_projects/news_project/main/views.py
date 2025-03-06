@@ -1,7 +1,7 @@
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import New, Worker
-from .forms import NewsForm
+from .models import New, Login
+from .forms import NewsForm, LoginForm
 from django.contrib import messages
 
 
@@ -95,3 +95,21 @@ def update(request,pk):
         "form": form
     }
     return render(request, "article/update.html", context)
+
+
+
+def login(request):
+    form = LoginForm()
+    if request.method == "POST":
+        form = LoginForm(request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Login successfully")
+            return redirect('main:blogs')
+
+
+    context = {
+        'login_form': Login.objects.all(),
+        "form": form
+    }
+    return render(request, "article/login.html", context)

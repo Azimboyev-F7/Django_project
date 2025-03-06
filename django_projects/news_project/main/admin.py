@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import New, Worker
+from .models import New, Login
 
 
 # Register your models here.
@@ -17,4 +17,10 @@ class NewAdmin(admin.ModelAdmin):
 
 admin.site.register(New, NewAdmin)
 
-admin.site.register(Worker)
+class LoginAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'id')
+    list_display_links = ('first_name',)
+    list_max_show_all = 100
+    list_per_page = 2
+
+admin.site.register(Login)
