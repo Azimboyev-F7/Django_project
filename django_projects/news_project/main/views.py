@@ -99,6 +99,7 @@ def update(request,pk):
 
 
 def login(request):
+    print(request.POST)
     form = LoginForm()
     if request.method == "POST":
         form = LoginForm(request.POST, files=request.FILES)

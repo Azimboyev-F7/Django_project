@@ -14,7 +14,7 @@ class NewsForm(forms.ModelForm):
         self.fields['content'].widget.attrs.update({'class': 'form-control'})
         self.fields['image'].widget.attrs.update({'class': 'form-control'})
 
-class LoginForm(forms.Form):
+class LoginForm(forms.ModelForm):
     class Meta:
         fields = ['username', 'password', 'first_name', 'last_name', 'email']
         model = Login

@@ -11,33 +11,19 @@
         <div class="col">
             <form action="" method="post">
                 {% csrf_token %}
-                <div class="mb-3">
-                    <label for="exampleInputUsername" class="form-label">Title</label>
-                    {{ form.username }}
-                    <input type="text" class="form-control" name="username" id="exampleInputPassword"
-{#                           aria-describedby="emailHelp">#}
-{#                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>#}
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputFirst_name" class="form-label">Password</label>
-                    {{ form.first_name }}
-{#                    <input type="text" class="form-control" name="content" id="exampleInputFirst_name">#}
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputLast_name" class="form-label">Password</label>
-                    {{ form.last_name }}
-{#                    <input type="text" class="form-control" name="content" id="exampleInputLast_name">#}
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword" class="form-label">Password</label>
-                    {{ form.password }}
-{#                    <input type="text" class="form-control" name="content" id="exampleInputLast_name">#}
-                </div>
-                <div class="mb-3">
-{#                    <input type="file" class="form-control" name="image" id="exampleEmail">#}
-                    {{ form.email }}
-                    <label class="form-label" for="exampleEmail"></label>
-                </div>
+                {{ form.as_p }}
+
+{#                <div class="mb-3">#}
+{#                    <label for="exampleInputUsername" class="form-label">Username</label>#}
+{#                    {{ form.username }}#}
+{#                </div>#}
+{##}
+{#                <div class="mb-3">#}
+{#                    <label for="exampleInputPassword" class="form-label">Password</label>#}
+{#                    {{ form.password }}#}
+{#                </div>#}
+
+                <button type="submit" class="btn btn-primary">Login</button>
             </form>
         </div>
     </div>
