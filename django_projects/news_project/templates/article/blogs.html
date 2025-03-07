@@ -9,19 +9,31 @@
 
 {% block content %}
     <div class="container">
+        {#        <div class="row">#}
+        {#            <div class="col-md-4 offset-11 d-flex mt-3">#}
+        {#                <a href="{% url 'main:login' %}" type="submit" class="btn btn-info">LOGIN</a>#}
+        {#            </div>#}
+        {#        </div>#}
         <div class="row">
-            <div class="col-md-4">
-                <a href="{% url 'main:login' %}" type="submit" >LOGIN</a>
-                <button></button>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <h1 style="color: #ff5733; font-weight: bold;">Article list</h1>
+                {% if login %}
+                    {#                    {% for foo in login %}#}
+                    <div class="d-flex align-items-center border rounded p-2 shadow-sm">
+                        <img src="{% static 'image/unknown.jpg' %}" alt="Profile Picture" class="rounded-circle me-2"
+                             width="50">
+                        <div>
+                            <h6 class="mb-0">{{ login.first_name }} {{ login.last_name }}</h6>
+                            <small class="text-muted">@{{ login.username }}</small>
+                        </div>
+                        <a href="{% url 'main:logout' %}" class="btn btn-danger btn-sm ms-3">Logout</a>
+                    </div>
+                    {#                    {% endfor %}#}
+                {% else %}
+                    <a href="{% url 'main:login' %}" class="btn btn-outline-dark px-4 py-2 rounded-pill">LOGIN</a>
+                {% endif %}
             </div>
-        </div>
-        <div class="row">
-            <h1 style="color: #ff5733">Article list</h1>
-            <p>Article List page</p>
-
-            <div class="col-md-4 offset-4 d-flex justify-content-center ">
-                <a class="btn btn-success" type="submit" href="{% url 'main:create' %}">Add Article</a>
-            </div>
+            <h2 class="text-muted fst-italic fs-5">Article List page</h2>
         </div>
         <div class="row">
             <div class="row">

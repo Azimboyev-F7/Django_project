@@ -1,4 +1,5 @@
 # from django.http import HttpResponse
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import New, Login
 from .forms import NewsForm, LoginForm
@@ -16,6 +17,7 @@ def index(request):
 
 
 def blog(request):
+    login = Login.objects.first()
     new = New.objects.all()
     query = request.GET.get('q')
 
@@ -25,6 +27,7 @@ def blog(request):
         new = New.objects.filter(title__contains=query)
 
     context = {
+        'login': login,
         "new": new,
     }
     return render(request, "article/blogs.html", context)
@@ -99,7 +102,6 @@ def update(request,pk):
 
 
 def login(request):
-    print(request.POST)
     form = LoginForm()
     if request.method == "POST":
         form = LoginForm(request.POST, files=request.FILES)
@@ -114,3 +116,9 @@ def login(request):
         "form": form
     }
     return render(request, "article/login.html", context)
+
+# main/views.py
+
+def logout_view(request):
+    logout(request)  # Logs out the user
+    return redirect('main:login')  # Redirect to the login page after logout
