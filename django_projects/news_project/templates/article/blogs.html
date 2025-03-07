@@ -24,7 +24,7 @@
                              width="50">
                         <div>
                             <h6 class="mb-0">{{ login.first_name }} {{ login.last_name }}</h6>
-                            <small class="text-muted">@{{ login.username }}</small>
+                            <small class="text-muted">{{ login.email }}</small>
                         </div>
                         <a href="{% url 'main:logout' %}" class="btn btn-danger btn-sm ms-3">Logout</a>
                     </div>

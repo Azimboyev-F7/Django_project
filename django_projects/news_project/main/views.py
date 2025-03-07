@@ -1,4 +1,4 @@
-# from django.http import HttpResponse
+from django.http import HttpResponse
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import New, Login
@@ -117,8 +117,16 @@ def login(request):
     }
     return render(request, "article/login.html", context)
 
-# main/views.py
 
 def logout_view(request):
-    logout(request)  # Logs out the user
-    return redirect('main:login')  # Redirect to the login page after logout
+    user = Login.objects.first()
+
+    if request.method == "POST":
+        user.delete()
+        messages.error(request, "Logout successfully")
+        return redirect('main:blogs')
+
+    context = {
+        "user": user,
+    }
+    return render(request, "article/logout.html", context)
