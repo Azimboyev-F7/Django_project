@@ -15,6 +15,8 @@ class NewsForm(forms.ModelForm):
         self.fields['image'].widget.attrs.update({'class': 'form-control'})
 
 class LoginForm(forms.ModelForm):
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'id': 'exampleInputPassword'}))
     class Meta:
         fields = ['username', 'password', 'first_name', 'last_name', 'email']
         model = Login
@@ -22,7 +24,6 @@ class LoginForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update({'class': 'form-control', 'id': 'exampleInputUsername'})
-        self.fields['password'].widget.attrs.update({'class': 'form-control', 'id': 'exampleInputPassword'})
         self.fields['first_name'].widget.attrs.update({'class': 'form-control', 'id': 'exampleInputFirstName'})
         self.fields['last_name'].widget.attrs.update({'class': 'form-control', 'id': 'exampleInputLastName'})
         self.fields['email'].widget.attrs.update({'class': 'form-control', 'id': 'exampleInputEmail'})
