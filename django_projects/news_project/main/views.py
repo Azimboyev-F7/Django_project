@@ -110,7 +110,6 @@ def login(request):
             messages.success(request, "Login successfully")
             return redirect('main:blogs')
 
-
     context = {
         'login_form': Login.objects.all(),
         "form": form
@@ -130,3 +129,12 @@ def logout_view(request):
         "user": user,
     }
     return render(request, "article/logout.html", context)
+
+def navbar(request):
+    form = NewsForm()
+    logins = Login.objects.first()
+    ctx = {
+        "form": form,
+        "logins": logins,
+    }
+    return render(request, 'navbar.html', ctx)
