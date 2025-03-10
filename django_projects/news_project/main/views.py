@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import New, Login
@@ -84,17 +84,17 @@ def delete(request,pk):
     return render(request, "article/delete.html", context)
 
 def update(request,pk):
-    object = get_object_or_404(New,id=pk)
-    form = NewsForm(instance=object)
+    objects = get_object_or_404(New,id=pk)
+    form = NewsForm(instance=objects)
     if request.method == "POST":
-        form = NewsForm(request.POST, files=request.FILES, instance=object)
+        form = NewsForm(request.POST, files=request.FILES, instance=objects)
         if form.is_valid():
             form.save()
             messages.success(request, "Article successfully updated")
             return redirect('main:blogs')
 
     context = {
-        "object": object,
+        "object": objects,
         "form": form
     }
     return render(request, "article/update.html", context)

@@ -10,6 +10,6 @@
 {% block content %}
     <form action="{% url 'main:blogs' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
+        {{ form.as_p }}
     </form>
 {% endblock %}

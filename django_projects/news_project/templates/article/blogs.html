@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block content %}
+    {% include 'navbar.html' %}
     <div class="container">
         {#        <div class="row">#}
         {#            <div class="col-md-4 offset-11 d-flex mt-3">#}
@@ -34,6 +35,11 @@
                 {% endif %}
             </div>
             <h2 class="text-muted fst-italic fs-5">Article List page</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4 offset-3 d-flex justify-content-center">
+                <a href="{% url 'main:create' %}" class="btn btn-success">Add article</a>
+            </div>
         </div>
         <div class="row">
             <div class="row">
