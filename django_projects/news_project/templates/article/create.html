@@ -21,23 +21,19 @@
         <div class="col">
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.as_p }}
-                {#                    <div class="mb-3">#}
-                {#                        <label for="exampleInputTitle" class="form-label">Title</label>#}
-                {#                        {{ form.title }}#}
-                {#                        <input type="text" class="form-control" name="title" id="exampleInputTitle" aria-describedby="emailHelp">#}
-                {#                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>#}
-                {#                    </div>#}
-                {#                    <div class="mb-3">#}
-                {#                        <label for="exampleInputContent" class="form-label">Password</label>#}
-                {#                        {{ form.content }}#}
-                {#                        <input type="text" class="form-control" name="content" id="exampleInputContent">#}
-                {#                    </div>#}
-                {#                    <div class="mb-3">#}
-                {#                        <input type="file" class="form-image" name="image" id="exampleImage">#}
-                {#                        {{ form.image }}#}
-                {#                        <label class="form-check-label" for="exampleImage"></label>#}
-                {#                    </div>#}
+                <div class="mb-3">
+                    <label for="exampleInputTitle" class="form-label">Title</label>
+                    <input type="text" class="form-control" name="title" id="exampleInputTitle"
+                           aria-describedby="">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputContent" class="form-label">Password</label>
+                    <input type="text" class="form-control" name="content" id="exampleInputContent">
+                </div>
+                <div class="mb-3">
+                    <input type="file" class="form-image" name="image" id="exampleImage">
+                    <label class="form-label" for="exampleImage"></label>
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

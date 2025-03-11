@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     # INSTALLED
 
     # CREATED
-    "main",
+    "main","auth",
 ]
 
 MIDDLEWARE = [

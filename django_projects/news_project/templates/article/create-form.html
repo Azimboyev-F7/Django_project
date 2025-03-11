@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <figure>
+            <blockquote class="blockquote">
+                <p>Create Page</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                <a href="{% url 'main:blogs' %}">home</a> / <span>create-form</span>
+            </figcaption>
+        </figure>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

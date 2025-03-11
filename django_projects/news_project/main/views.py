@@ -1,4 +1,4 @@
-# from django.http import HttpResponse
+from django.http import HttpResponse
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import New, Login
@@ -42,18 +42,18 @@ def detail(request,pk):
 
     return render(request, "article/detail.html", context)
 
-# def createe(request):
-#
-#     if request.method == "POST":
-#         New.objects.create(title=request.POST['title'], content=request.POST['content'])
-#         return HttpResponse(content="Article created successfully <a href='../'>Go home</a>")
-#
-#     context = {
-#         "object_list" : New.objects.all()
-#     }
-#     return render(request, "article/create.html", context)
-
 def create(request):
+
+    if request.method == "POST":
+        New.objects.create(title=request.POST['title'], content=request.POST['content'])
+        return HttpResponse(content="Article created successfully <a href='../'>Go home</a>")
+
+    context = {
+        "object_list" : New.objects.all()
+    }
+    return render(request, "article/create.html", context)
+
+def create_form(request):
     form = NewsForm()
 
     if request.method == "POST":
@@ -66,7 +66,7 @@ def create(request):
         "object_list" : New.objects.all(),
         'form': form
     }
-    return render(request, "article/create.html", context)
+    return render(request, "article/create-form.html", context)
 
 
 def delete(request,pk):
@@ -133,6 +133,7 @@ def logout_view(request):
 def navbar(request):
     form = NewsForm()
     logins = Login.objects.first()
+    print(logins)
     ctx = {
         "form": form,
         "logins": logins,
