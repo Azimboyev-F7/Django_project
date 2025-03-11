@@ -8,22 +8,25 @@
 
 {% block content %}
     <div class="row">
-        <form action="" method="post">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="exampleFormControlUsername" class="form-label">Username</label>
-                <input type="text" class="form-control" id="exampleFormControlUsername"
-                       placeholder="Enter your Username...">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlPassword" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleFormControlPassword"
-                       placeholder="Enter your Password...">
-            </div>
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-primary" type="button">LOGIN</button>
-                <button class="btn btn-secondary" type="button">Go back</button>
-            </div>
-        </form>
+        <div class="col-6 offset-3">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleFormControlUsername" class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" id="exampleFormControlUsername"
+                           placeholder="Enter your Username...">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlPassword" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="exampleFormControlPassword"
+                           placeholder="Enter your Password...">
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto my-4">
+                    <button class="btn btn-primary" type="submit">LOGIN</button>
+                    <button class="btn btn-secondary" type="submit">Go back</button>
+                </div>
+                <p class="text text-center">Don't have an account yet? <a href="">Register</a></p>
+            </form>
+        </div>
     </div>
 {% endblock %}
