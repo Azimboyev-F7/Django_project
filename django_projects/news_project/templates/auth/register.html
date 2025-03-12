@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block header %}
+    <h1 class="text-center my-4">Register</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card shadow p-4">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleFormControlUsername" class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" id="exampleFormControlUsername"
+                               placeholder="Enter your Username...">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlEmail" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" id="exampleFormControlEmail"
+                               placeholder="Enter your Email...">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlPassword" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="exampleFormControlPassword"
+                               placeholder="Enter your Password...">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlConfirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" name="confirm_password" class="form-control" id="exampleFormControlConfirmPassword"
+                               placeholder="Confirm your Password...">
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto my-4">
+                        <button class="btn btn-success" type="submit">Register</button>
+                        <a href="{% url 'auth_user:login' %}" class="btn btn-secondary">Back to Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

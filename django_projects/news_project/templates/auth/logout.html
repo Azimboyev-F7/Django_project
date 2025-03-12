@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block header %}
+    <nav class="navbar navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">My Website</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">
+        <div class="card shadow-lg p-5 text-center" style="max-width: 400px; border-radius: 15px;">
+            <div class="card-body">
+                <h2 class="mb-4 text-danger">Logging Out?</h2>
+                <p class="text-muted">Are you sure you want to log out? You will need to log in again to access your account.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger w-100 mb-2">Yes, Logout</button>
+                    <a href="{% url 'main:blogs' %}" class="btn btn-secondary w-100">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

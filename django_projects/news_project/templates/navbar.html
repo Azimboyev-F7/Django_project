@@ -31,21 +31,25 @@
                 </li>
             </ul>
         </div>
-        <a href="{% url 'auth_user:login' %}" class="btn btn-outline-success">LOGIN</a>
-{#        <div class="d-flex justify-content-end mt-3">#}
-{#            {% if login %}#}
-{#                <div class="d-flex align-items-center border rounded p-2 shadow-sm">#}
-{#                    <img src="{% static 'image/unknown.jpg' %}" alt="Profile Picture" class="rounded-circle me-2"#}
-{#                         width="50">#}
-{#                    <div>#}
-{#                        <h6 class="mb-0">{{ logins.first_name }} {{ logins.last_name }}</h6>#}
+{#        {% if request.user.is_authenticated %}#}
+{#            {{ e }}#}
+{#        {% else %}#}
+{#            <a href="{% url 'auth_user:login' %}" class="btn btn-outline-success">LOGIN</a>#}
+{#        {% endif %}#}
+        <div class="row">
+            {% if request.user.is_authenticated %}
+                <div class="d-flex align-items-center border rounded p-2 shadow-sm">
+                    <img src="{% static 'image/unknown.jpg' %}" alt="Profile Picture" class="rounded-circle me-2"
+                         width="50">
+                    <div>
+                        <h6 class="mb-0">{{ request.user.username }}</h6>
 {#                        <small class="text-muted">{{ logins.email }}</small>#}
-{#                    </div>#}
-{#                    <a href="{% url 'main:logout' %}" class="btn btn-danger btn-sm ms-3">Logout</a>#}
-{#                </div>#}
-{#            {% else %}#}
-{#                <a href="{% url 'main:login' %}" class="btn btn-outline-dark px-4 py-2 rounded-pill">LOGIN</a>#}
-{#            {% endif %}#}
-{#        </div>#}
+                    </div>
+                    <a href="{% url 'auth_user:logout' %}" class="btn btn-danger btn-sm ms-3">Logout</a>
+                </div>
+            {% else %}
+                <a href="{% url 'auth_user:login' %}" class="btn btn-outline-dark px-4 py-2 rounded-pill">LOGIN</a>
+            {% endif %}
+        </div>
     </div>
 </nav>
