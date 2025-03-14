@@ -11,7 +11,7 @@ class NewAdmin(admin.ModelAdmin):
     search_fields = ('id', 'title')
     date_hierarchy = 'created_at'
     ordering = ('-id', )
-    readonly_fields = ('created_at', 'updated_at')
+    readonly_fields = ('created_at', 'updated_at', 'slug')
 
 
 

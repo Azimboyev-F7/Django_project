@@ -1,8 +1,10 @@
 from django.http import HttpResponse
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect, get_object_or_404
+
+from auth_user.forms import MyUserCreationForm
 from .models import New, Login
-from .forms import NewsForm, LoginForm
+from .forms import NewsForm, LoginForm, MyUserCreationForm
 from django.contrib import messages
 
 
@@ -33,11 +35,10 @@ def blog(request):
     return render(request, "article/blogs.html", context)
 
 
-def detail(request,pk):
-    new = New.objects.get(id=pk)
+def detail(request,slug):
+    new = New.objects.get(slug=slug)
     context = {
         "object": new,
-
     }
 
     return render(request, "article/detail.html", context)
@@ -109,3 +110,13 @@ def navbar(request):
         "logins": logins,
     }
     return render(request, 'navbar.html', ctx)
+
+
+def notifications(request):
+    form = MyUserCreationForm()
+    logins = Login.objects.first()
+    context = {
+        "form": form,
+        "logins": logins,
+    }
+    return render(request, 'notifications.html', context)

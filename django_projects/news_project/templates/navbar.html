@@ -1,4 +1,6 @@
 {% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'main:blogs' %}">Navbar</a>
@@ -31,11 +33,18 @@
                 </li>
             </ul>
         </div>
-{#        {% if request.user.is_authenticated %}#}
-{#            {{ e }}#}
-{#        {% else %}#}
-{#            <a href="{% url 'auth_user:login' %}" class="btn btn-outline-success">LOGIN</a>#}
-{#        {% endif %}#}
+        {#        {% if request.user.is_authenticated %}#}
+        {#            {{ e }}#}
+        {#        {% else %}#}
+        {#            <a href="{% url 'auth_user:login' %}" class="btn btn-outline-success">LOGIN</a>#}
+        {#        {% endif %}#}
+        <div class="row mx-3">
+            {% if request.user.is_staff or request.user.is_superuser %}
+                <a href="{% url 'main:notifications' %}" class="btn btn-outline-success">
+                    <i class="fa-solid fa-bell"></i> Notifications
+                </a>
+            {% endif %}
+        </div>
         <div class="row">
             {% if request.user.is_authenticated %}
                 <div class="d-flex align-items-center border rounded p-2 shadow-sm">
@@ -43,7 +52,7 @@
                          width="50">
                     <div>
                         <h6 class="mb-0">{{ request.user.username }}</h6>
-{#                        <small class="text-muted">{{ logins.email }}</small>#}
+                        {#                        <small class="text-muted">{{ logins.email }}</small>#}
                     </div>
                     <a href="{% url 'auth_user:logout' %}" class="btn btn-danger btn-sm ms-3">Logout</a>
                 </div>

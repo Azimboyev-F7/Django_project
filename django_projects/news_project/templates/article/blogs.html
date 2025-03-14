@@ -38,7 +38,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ ne.title }}</h5>
                                 <p class="card-text">{{ ne.content | slice:":300" }}</p>
-                                <a href="{% url 'main:detail' ne.id %}" class="btn btn-primary">ABOUT IT</a>
+                                <a href="{% url 'main:detail' ne.slug %}" class="btn btn-primary">ABOUT IT</a>
                             </div>
                         </div>
 

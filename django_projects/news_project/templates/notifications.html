@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Registration Time</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ request.user.username }}</td>
+                <td>{{ request.user.email }}</td>
+                <td>{{ request.user.date_joined |date:"Y-m-d H:i:s" }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

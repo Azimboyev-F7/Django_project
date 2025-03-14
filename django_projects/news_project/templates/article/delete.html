@@ -25,7 +25,7 @@
                 <form action="" method="post">
                     {% csrf_token %}
                     <input type="submit" class="btn btn-info" value="Yes, I'm sure">
-                    <a href="{% url 'main:detail' object.id %}" class="btn btn-danger">No, take me back</a>
+                    <a href="{% url 'main:detail' object.slug %}" class="btn btn-danger">No, take me back</a>
                 </form>
             </div>
         </div>
