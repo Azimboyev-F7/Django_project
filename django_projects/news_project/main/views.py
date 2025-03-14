@@ -100,36 +100,6 @@ def update(request,pk):
     return render(request, "article/update.html", context)
 
 
-
-def login(request):
-    form = LoginForm()
-    if request.method == "POST":
-        form = LoginForm(request.POST, files=request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Login successfully")
-            return redirect('main:blogs')
-
-    context = {
-        'login_form': Login.objects.all(),
-        "form": form
-    }
-    return render(request, "article/login.html", context)
-
-
-def logout_view(request):
-    user = Login.objects.first()
-
-    if request.method == "POST":
-        user.delete()
-        messages.error(request, "Logout successfully")
-        return redirect('main:blogs')
-
-    context = {
-        "user": user,
-    }
-    return render(request, "article/logout.html", context)
-
 def navbar(request):
     form = NewsForm()
     logins = Login.objects.first()
