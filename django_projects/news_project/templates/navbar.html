@@ -40,7 +40,7 @@
         {#        {% endif %}#}
         <div class="row mx-3">
             {% if request.user.is_staff or request.user.is_superuser %}
-                <a href="{% url 'main:notifications' %}" class="btn btn-outline-success">
+                <a href="{% url 'auth_user:notifications' %}" class="btn btn-outline-success">
                     <i class="fa-solid fa-bell"></i> Notifications
                 </a>
             {% endif %}

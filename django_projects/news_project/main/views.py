@@ -110,13 +110,3 @@ def navbar(request):
         "logins": logins,
     }
     return render(request, 'navbar.html', ctx)
-
-
-def notifications(request):
-    form = MyUserCreationForm()
-    logins = Login.objects.first()
-    context = {
-        "form": form,
-        "logins": logins,
-    }
-    return render(request, 'notifications.html', context)

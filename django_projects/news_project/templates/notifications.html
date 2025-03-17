@@ -13,15 +13,51 @@
             <th>Username</th>
             <th>Email</th>
             <th>Registration Time</th>
+            <th>Staff status</th>
         </tr>
         </thead>
         <tbody>
+        {% for user in users %}
+
             <tr>
-                <td>{{ request.user.username }}</td>
-                <td>{{ request.user.email }}</td>
-                <td>{{ request.user.date_joined |date:"Y-m-d H:i:s" }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.date_joined }}</td>
+                <td>
+                    {% if user.is_staff %}
+                        ✅ Staff
+                    {% else %}
+                        ❌ Not Staff
+                    {% endif %}
+                </td>
             </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4" class="text-center">No users found.</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
+    <button class="dark-back-button" onclick="window.history.back()">⬅ Go Back</button>
+
+<style>
+.dark-back-button {
+    background-color: #222; /* Dark gray (matches admin panel) */
+    color: #ddd; /* Light gray text */
+    border: 2px solid #444; /* Slight border */
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.dark-back-button:hover {
+    background-color: #333; /* Slightly lighter on hover */
+    border-color: #666;
+    color: white;
+}
+</style>
 
 {% endblock %}

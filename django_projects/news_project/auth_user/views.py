@@ -1,8 +1,10 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.contrib import auth
 from django.contrib import messages
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
@@ -71,3 +73,10 @@ def register_view(request):
     }
 
     return render(request, 'auth/register.html', context)
+
+def notifications(request):
+    users = User.objects.all()
+    context = {
+        'users': users,
+    }
+    return render(request, 'notifications.html', context)
