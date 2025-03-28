@@ -33,11 +33,11 @@
                 </li>
             </ul>
         </div>
-        {#        {% if request.user.is_authenticated %}#}
+        <!-- {#        {% if request.user.is_authenticated %}#}
         {#            {{ e }}#}
         {#        {% else %}#}
         {#            <a href="{% url 'auth_user:login' %}" class="btn btn-outline-success">LOGIN</a>#}
-        {#        {% endif %}#}
+        {#        {% endif %}#} -->
         <div class="row mx-3">
             {% if request.user.is_staff or request.user.is_superuser %}
                 <a href="{% url 'auth_user:notifications' %}" class="btn btn-outline-success">
@@ -47,17 +47,24 @@
         </div>
         <div class="row">
             {% if request.user.is_authenticated %}
-                <div class="d-flex align-items-center border rounded p-2 shadow-sm">
-                    <img src="{% static 'image/unknown.jpg' %}" alt="Profile Picture" class="rounded-circle me-2"
-                         width="50">
-                    <div>
-                        <h6 class="mb-0">{{ request.user.username }}</h6>
-                        {#                        <small class="text-muted">{{ logins.email }}</small>#}
-                    </div>
-                    <a href="{% url 'auth_user:logout' %}" class="btn btn-danger btn-sm ms-3">Logout</a>
-                </div>
+            <div class="dropdown">
+                <button class="btn btn-light shadow-sm rounded-pill px-3 py-2 dropdown-toggle d-flex align-items-center" 
+                        id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{% static 'image/unknown.jpg' %}" 
+                            alt="Profile Picture" class="rounded-circle me-2 border" 
+                            width="40" height="40">
+                    <span class="fw-bold text-dark">{{ user.username }}</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm mt-2" aria-labelledby="userDropdown">
+                    <li><a class="dropdown-item py-2" href="#">👤 Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item py-2 text-danger" href="#">🚪 Logout</a></li>
+                </ul>
+            </div>
             {% else %}
-                <a href="{% url 'auth_user:login' %}" class="btn btn-outline-dark px-4 py-2 rounded-pill">LOGIN</a>
+            <a href="{% url 'auth_user:login' %}" class="btn btn-danger text-white px-4 py-2 rounded-pill shadow-sm">
+                LOGIN
+            </a>
             {% endif %}
         </div>
     </div>

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     # INSTALLED
 
     # CREATED
-    "main","auth_user",
+    "main","auth_user","recipe"
 ]
 
 MIDDLEWARE = [
