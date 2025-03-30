@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
-from django.dp.models.signals import pre_save
+from django.db.models.signals import pre_save
 # Create your models here.
 
 class Tag(models.Model):
@@ -29,6 +29,7 @@ class Ingredient(models.Model):
     )
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
+    slug = models.SlugField(null=True, blank=True)
     quantity = models.CharField(max_length=200)
     unit = models.IntegerField(choices=UNITS_CHOICEs)
     is_active = models.BooleanField(default=True)
@@ -44,3 +45,12 @@ def recipe_pre_save(sender, instance, *args, **kwargs):
             instance.slug = f"{slugify(instance.title)}-{str(uuid.uuid4()).split('-')[0]}"
 
 pre_save.connect(recipe_pre_save, sender=Recipe)
+
+
+def ingredient_pre_save(sender, instance, *args, **kwargs):
+    if instance.slug is None:
+        if Ingredient.objects.filter(slug=slugify(instance.name)).exclude(id=instance.id).exists():
+            import uuid
+            instance.slug = f"{slugify(instance.name)}-{str(uuid.uuid4()).split('-')[0]}"
+
+pre_save.connect(ingredient_pre_save, sender=Ingredient)
