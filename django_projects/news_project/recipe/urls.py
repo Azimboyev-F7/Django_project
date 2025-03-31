@@ -4,5 +4,4 @@ app_name = "recipe"
 
 
 urlpatterns = [
-    path("")
 ]
