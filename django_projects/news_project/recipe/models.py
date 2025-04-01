@@ -36,13 +36,16 @@ class Ingredient(models.Model):
     )
 
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
     quantity = models.DecimalField(max_digits=200, decimal_places=2)
     unit = models.IntegerField(choices=UNIT_CHOICES)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
+    def __str__(self):
+        return self.title
 
 def recipe_pre_save(sender, instance, *args, **kwargs):
     if instance.slug is None:
