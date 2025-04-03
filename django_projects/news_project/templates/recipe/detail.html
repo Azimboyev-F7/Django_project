@@ -27,6 +27,19 @@
                     </div>
                   </div>
                 </div>
+                <div class="row">
+                  {% for ingredient in ingredients %}
+                    <div class="col-sm-4 mb-3 mb-sm-3 my-3">
+                      <div class="card d-flex">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ ingredient.title }}</h5>
+                          <p class="card-text">{{ ingredient.quantity }} {{ ingredient.get_unit_display }} </p>
+                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

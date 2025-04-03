@@ -14,7 +14,9 @@ def recipe_list(request):
 
 def recipe_detail(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
+    ingredients = Ingredient.objects.all()
     context = {
         'recipe': recipe,
+        'ingredients': ingredients
     }
     return render(request, 'recipe/detail.html', context)
