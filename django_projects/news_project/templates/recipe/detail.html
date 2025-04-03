@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+  {% include 'navbar.html' %}
+  <h1>Details</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-3">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="{{ recipe.image.url }}" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ recipe.title }}</h5>
+                      <p class="card-text">{{ recipe.description }}</p>
+                      <p class="card-text"><small class="text-body-secondary">Last updated {{ recipe.updated_at|timesince }} mins ago</small></p>
+                      <div class="d-flex gap-2">
+                        <a href="" class="btn btn-info">Edit recipe</a>
+                        <a href="" class="btn btn-danger">Recipe Remove</a>
+                        <a href="" class="btn btn-primary">Add Ingredients</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

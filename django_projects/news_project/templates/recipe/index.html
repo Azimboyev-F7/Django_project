@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+{% include 'navbar.html' %}
+<h1>Recipes List</h1>
+
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% for recipe in recipes %}
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <img src="{{ recipe.image.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ recipe.title }}</h5>
+                    <h6>{{ recipe.author }}</h6>
+                    <p class="card-text">{{ recipe.description|slice:" :200" }}...</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated {{ recipe.updated_at|timesince }} ago</small></p>
+                    <a href="{% url 'recipe:detail' recipe.slug %}" class="btn btn-primary">About it</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
