@@ -6,6 +6,9 @@ from django.contrib.auth.models import User, AbstractBaseUser, Permission
 
 def recipe_list(request):
     recipes = Recipe.objects.all()
+    query = request.GET.get('q')
+    if query:
+        recipes = recipes.filter(title__icontains=query)
     context = {
         'recipes': recipes,
     }

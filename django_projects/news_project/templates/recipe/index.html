@@ -15,7 +15,7 @@
                     <img src="{{ recipe.image.url }}" class="card-img-top" alt="...">
                     <div class="card-body">
                     <h5 class="card-title">{{ recipe.title }}</h5>
-                    <h6>Author: <em>{{ recipe.author }}</em></h6>
+                    <h6>Author: <em><a href="?q={{ recipe.author }}">{{ recipe.author }}</a></em></h6>
                     <p class="card-text">{{ recipe.description|slice:" :200" }}...</p>
                     <p class="card-text"><small class="text-body-secondary">Last updated {{ recipe.updated_at|timesince }} ago</small></p>
                     <a href="{% url 'recipe:detail' recipe.slug %}" class="btn btn-primary">About it</a>
