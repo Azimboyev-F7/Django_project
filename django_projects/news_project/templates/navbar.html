@@ -55,7 +55,7 @@
                 <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm mt-2" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item py-2" href="#">👤 Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item py-2 text-danger" href="#">🚪 Logout</a></li>
+                    <li><a class="dropdown-item py-2 text-danger" href="{% url 'auth_user:logout' %}">🚪 Logout</a></li>
                 </ul>
             </div>
             {% else %}

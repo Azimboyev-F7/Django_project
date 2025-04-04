@@ -8,7 +8,7 @@ def recipe_list(request):
     recipes = Recipe.objects.all()
     query = request.GET.get('q')
     if query:
-        recipes = recipes.filter(title__icontains=query)
+        recipes = recipes.filter(author__username__icontains=query)
     context = {
         'recipes': recipes,
     }
@@ -17,7 +17,9 @@ def recipe_list(request):
 
 def recipe_detail(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
-    ingredients = Ingredient.objects.all()
+    ingredients = Ingredient.objects.filter(recipe__author=recipe.author.id)
+    is_author = request.user == recipe.author
+    print(is_author)
     context = {
         'recipe': recipe,
         'ingredients': ingredients

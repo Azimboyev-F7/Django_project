@@ -1,47 +1,55 @@
+
 {% extends 'base.html' %}
 {% load static %}
 
 {% block header %}
   {% include 'navbar.html' %}
-  <h1>Details</h1>
+  <h1>Recipe Details</h1>
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-12">
-            <div class="card mb-3">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="{{ recipe.image.url }}" class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ recipe.title }}</h5>
-                      <p class="card-text">{{ recipe.description }}</p>
-                      <p class="card-text"><small class="text-body-secondary">Last updated {{ recipe.updated_at|timesince }} ago</small></p>
-                      <div class="d-flex gap-2">
-                        <a href="" class="btn btn-info">Edit recipe</a>
-                        <a href="" class="btn btn-danger">Recipe Remove</a>
-                        <a href="" class="btn btn-primary">Add Ingredients</a>
-                      </div>
-                    </div>
-                  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{ recipe.image.url }}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ recipe.title }}</h5>
+              <h6>Author: <em>{{ recipe.author }}</em></h6>
+              <p class="card-text">{{ recipe.description }}</p>
+              <p class="card-text">
+                <small class="text-body-secondary">
+                  Last updated {{ recipe.updated_at|timesince }} ago
+                </small>
+              </p>
+              {% if is_author %}
+                <div class="d-flex gap-2">
+                  <a href="{% url 'recipe:update' recipe.slug %}" class="btn btn-info">Edit Recipe</a>
+                  <a href="{% url 'recipe:delete' recipe.slug %}" class="btn btn-danger">Remove Recipe</a>
+                  <a href="{% url 'recipe:ingredients' recipe.slug %}" class="btn btn-primary">Add Ingredients</a>
                 </div>
-                <div class="row">
-                  {% for ingredient in ingredients %}
-                    <div class="col-sm-4 mb-3 mb-sm-3 my-3">
-                      <div class="card d-flex">
-                        <div class="card-body">
-                          <h5 class="card-title">{{ ingredient.title }}</h5>
-                          <p class="card-text">{{ ingredient.quantity }} {{ ingredient.get_unit_display }} </p>
-                          <a href="#" class="btn btn-primary">Edit</a>
-                          <a href="#" class="btn btn-danger">Delete</a>
-                        </div>
-                      </div>
-                    </div>
-                    {% endfor %}
-                </div>
+              {% endif %}
             </div>
+          </div>
         </div>
+        <div class="row">
+          {% for ingredient in ingredients %}
+            <div class="col-sm-4 mb-3 mb-sm-3 my-3">
+              <div class="card d-flex">
+                <div class="card-body">
+                  <h5 class="card-title">{{ ingredient.title }}</h5>
+                  <p class="card-text">{{ ingredient.quantity }} {{ ingredient.get_unit_display }}</p>
+                  <a href="#" class="btn btn-primary">Edit</a>
+                  <a href="#" class="btn btn-danger">Delete</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
+  </div>
 {% endblock %}
