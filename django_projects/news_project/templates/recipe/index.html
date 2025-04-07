@@ -9,6 +9,9 @@
 
 {% block content %}
     <div class="row">
+        <div class="col-md-4">
+            <a href="{% url 'recipe:recipe_create' %}">Add Recipe</a>
+        </div>
         {% for recipe in recipes %}
             <div class="col-md-4">
                 <div class="card mb-3">
