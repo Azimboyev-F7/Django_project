@@ -11,13 +11,9 @@ class RecipeForm(forms.ModelForm):
 
 
     def __init__(self, *args, **kwargs):
+        
         super(RecipeForm, self).__init__(*args, **kwargs)
         self.fields['title'].widget.attrs.update({'class': 'form-control'})
         self.fields['description'].widget.attrs.update({'class': 'form-control'})
         self.fields['image'].widget.attrs.update({'class': 'form-control'})
         self.fields['tags'].widget.attrs.update({'class': 'form-control'})
-
-    def clean__title(self):
-        cleaned_data = super(RecipeForm, self).clean()
-        title = cleaned_data.get('title')
-        return super().clean()

@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 from .models import Recipe, Ingredient, Tag
 from django.contrib.auth.models import User, AbstractBaseUser, Permission
 from .forms import RecipeForm
@@ -32,13 +33,15 @@ def recipe_detail(request, slug):
 def recipe_create(request):
     form = RecipeForm()
     if request.method == "POST":
-        form = RecipeForm(request.POST)
+        form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
             recipe = form.save(commit=False)
             recipe.author = request.user
-            form.save()
-            return redirect('recipe:list', slug=recipe.slug)
+            recipe.save()
+            form.save_m2m()
+            reverse_url = reverse('recipe:detail')
+            return redirect(reverse_url)
     content = {
         'form': form
     }
-    return render(request, 'recipe/create.html', content)
+    return render(request, 'recipe/create_form.html', content)
