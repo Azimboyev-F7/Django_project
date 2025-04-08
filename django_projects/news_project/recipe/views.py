@@ -36,10 +36,10 @@ def recipe_create(request):
         form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
             recipe = form.save(commit=False)
-            recipe.author = request.user
+            recipe.author.id = request.user.id
             recipe.save()
             form.save_m2m()
-            reverse_url = reverse('recipe:detail')
+            reverse_url = reverse('recipe:list')
             return redirect(reverse_url)
     content = {
         'form': form
