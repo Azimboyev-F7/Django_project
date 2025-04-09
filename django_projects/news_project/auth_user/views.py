@@ -35,7 +35,9 @@ def login_views(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            messages.success(request, f"User now logged in")
+            messages.success(request, f"{ user.username } now logged in")
+            if request.GET.get('next'):
+                return redirect(request.GET.get('next'))
             return redirect('/')
     context = {
         'form': form,

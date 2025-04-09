@@ -27,7 +27,7 @@
               </p>
                 <div class="d-flex gap-2">
                   {% if is_author %}
-                    <a href="" class="btn btn-info">Edit Recipe</a>
+                    <a href="{% url 'recipe:update' recipe.slug %}" class="btn btn-info">Edit Recipe</a>
                     <a href="" class="btn btn-danger">Remove Recipe</a>
                     <a href="" class="btn btn-primary">Add Ingredients</a>
                   {% endif %}

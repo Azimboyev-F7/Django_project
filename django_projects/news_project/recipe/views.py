@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
+from django.contrib import messages
 from .models import Recipe, Ingredient, Tag
 from django.contrib.auth.models import User, AbstractBaseUser, Permission
 from .forms import RecipeForm
@@ -31,6 +32,10 @@ def recipe_detail(request, slug):
 
 
 def recipe_create(request):
+    if not request.user.is_authenticated:
+        messages.warning(request, "You must be logged in to create a recipe")
+        reverse_url = reverse('auth_user:login') + '?next=' + request.path
+        return redirect(reverse_url)
     form = RecipeForm()
     if request.method == "POST":
         form = RecipeForm(request.POST, request.FILES)
@@ -44,4 +49,20 @@ def recipe_create(request):
         'form': form
     }
     return render(request, 'recipe/create_form.html', context)
+
+def recipe_update(request, slug):
+    recipe = get_object_or_404(Recipe, slug=slug)
+    form = RecipeForm(instance=recipe)
+    if request.method == "POST":
+        form = RecipeForm(request.POST, request.FILES, instance=recipe)
+        if form.is_valid():
+            recipe = form.save(commit=False)
+            recipe.author.id = request.user.id
+            recipe.save()
+            form.save_m2m()
+            return redirect('recipe:list')
+    context = {
+        'form': form
+    }
+    return render(request, 'recipe/update.html', context)
 
