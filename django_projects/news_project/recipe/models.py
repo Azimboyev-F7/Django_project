@@ -13,7 +13,7 @@ class Tag(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to='recipe_images/')
-    slug = models.SlugField(null=True, blank=True)
+    slug = models.SlugField()
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, default=1)
     description = models.TextField()
     tags = models.ManyToManyField(Tag)
@@ -22,6 +22,20 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.title
+    
+def recipe_pre_save(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        base_slug = slugify(instance.title)
+        slug = base_slug
+        num = 1
+        import uuid
+
+        while Recipe.objects.filter(slug=slug).exclude(id=instance.id).exists():
+            slug = f"{base_slug}-{str(uuid.uuid4())[:8]}"
+
+        instance.slug = slug
+
+pre_save.connect(recipe_pre_save, sender=Recipe)
 
 # class Recipe_Tag(models.Model):
 #     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
@@ -47,19 +61,4 @@ class Ingredient(models.Model):
     def __str__(self):
         return self.title
 
-def recipe_pre_save(sender, instance, *args, **kwargs):
-    if instance.slug is None:
-        if Recipe.objects.filter(slug=slugify(instance.title)).exclude(id=instance.id).exists():
-            import uuid
-            instance.slug = f"{slugify(instance.title)}-{str(uuid.uuid4()).split('-')[0]}"
 
-pre_save.connect(recipe_pre_save, sender=Recipe)
-
-
-# def ingredient_pre_save(sender, instance, *args, **kwargs):
-#     if instance.slug is None:
-#         if Ingredient.objects.filter(slug=slugify(instance.name)).exclude(id=instance.id).exists():
-#             import uuid
-#             instance.slug = f"{slugify(instance.name)}-{str(uuid.uuid4()).split('-')[0]}"
-
-# pre_save.connect(ingredient_pre_save, sender=Ingredient)

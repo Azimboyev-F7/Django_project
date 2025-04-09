@@ -10,8 +10,7 @@ class RecipeForm(forms.ModelForm):
         exclude = ['author']
 
 
-    def __init__(self, *args, **kwargs):
-        
+    def __init__(self, *args, **kwargs):        
         super(RecipeForm, self).__init__(*args, **kwargs)
         self.fields['title'].widget.attrs.update({'class': 'form-control'})
         self.fields['description'].widget.attrs.update({'class': 'form-control'})

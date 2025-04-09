@@ -39,9 +39,9 @@ def recipe_create(request):
             recipe.author.id = request.user.id
             recipe.save()
             form.save_m2m()
-            reverse_url = reverse('recipe:list')
-            return redirect(reverse_url)
-    content = {
+            return redirect('recipe:list')
+    context = {
         'form': form
     }
-    return render(request, 'recipe/create_form.html', content)
+    return render(request, 'recipe/create_form.html', context)
+

@@ -14,8 +14,7 @@ class RecipeAdmin(admin.ModelAdmin):
     filter_horizontal = ('tags',)
     date_hierarchy = 'created_at'
     ordering = ('-id', )
-    readonly_fields = ('created_at', 'updated_at',)
-    prepopulated_fields = {'slug': ('title',)}
+    readonly_fields = ('created_at', 'updated_at', 'slug')
 
     def image_tag(self, obj):
         if obj.image:
