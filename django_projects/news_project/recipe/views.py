@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib import messages
 from .models import Recipe, Ingredient, Tag
 from django.contrib.auth.models import User, AbstractBaseUser, Permission
-from .forms import RecipeForm
+from .forms import RecipeForm, IngredientCreateForm
 # Create your views here.
 
 
@@ -17,6 +17,22 @@ def recipe_list(request):
     }
 
     return render(request, 'recipe/index.html', context)
+
+
+def my_recipe(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "You must be logged in to see your recipe")
+        reverse_url = reverse('auth_user:login') + '?next=' + request.path
+        return redirect(reverse_url)
+    recipes = Recipe.objects.filter(author=request.user)
+    print(recipes)
+    context = {
+        'recipes': recipes,
+    }
+    return render(request, 'recipe/my_recipe.html', context)
+    
+
+
 
 
 def recipe_detail(request, slug):
@@ -42,7 +58,7 @@ def recipe_create(request):
         form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
             recipe = form.save(commit=False)
-            recipe.author.id = request.user.id
+            recipe.author = request.user
             recipe.save()
             form.save_m2m()
             return redirect('recipe:list')
@@ -90,3 +106,27 @@ def recipe_delete(request, slug):
     }
 
     return render(request, 'recipe/delete_recipe.html', context)
+
+
+
+def ingredient_create(request):
+    if not request.user.is_authenticated:
+        messages.warning(request, "You must be logged in to create an ingredient")
+        reverse_url = reverse('auth_user:login') + '?next=' + request.path
+        return redirect(reverse_url)
+    recipe = get_object_or_404(Recipe, slug=request.slug)
+    form = IngredientCreateForm()
+    if request.method == "POST":
+        form = IngredientCreateForm(request.POST)
+        if form.is_valid():
+            ingredient = form.save(commit=False) 
+            ingredient.recipe = recipe
+            ingredient.save()
+            messages.success(request, "Ingredient successfully created")
+            reverse_url = reverse('recipe:detail', args=[recipe.slug])
+            return redirect(reverse_url)
+        
+    context = {
+        'form': form
+    }
+    return render(request, 'recipe/ingredient_create.html', context)
