@@ -109,12 +109,12 @@ def recipe_delete(request, slug):
 
 
 
-def ingredient_create(request):
+def ingredient_create(request, slug):
     if not request.user.is_authenticated:
         messages.warning(request, "You must be logged in to create an ingredient")
         reverse_url = reverse('auth_user:login') + '?next=' + request.path
         return redirect(reverse_url)
-    recipe = get_object_or_404(Recipe, slug=request.slug)
+    recipe = get_object_or_404(Recipe, slug=slug)
     form = IngredientCreateForm()
     if request.method == "POST":
         form = IngredientCreateForm(request.POST)
@@ -127,6 +127,7 @@ def ingredient_create(request):
             return redirect(reverse_url)
         
     context = {
-        'form': form
+        'form': form,
+        'recipe': recipe
     }
     return render(request, 'recipe/ingredient_create.html', context)
