@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -6,6 +7,7 @@ from auth_user.forms import MyUserCreationForm
 from .models import New, Login
 from .forms import NewsForm, LoginForm, MyUserCreationForm
 from django.contrib import messages
+
 
 
 # Create your views here.
@@ -21,6 +23,13 @@ def index(request):
 def blog(request):
     login = Login.objects.first()
     new = New.objects.all()
+
+    next_page = request.GET.get('next')
+    print(next_page)
+    if next_page == '/create-form/' or next_page == '/create/':
+        messages.warning(request, "You are not superuser")
+        return redirect("main:blogs")
+    
     query = request.GET.get('q')
 
     if query:
@@ -43,8 +52,13 @@ def detail(request,slug):
 
     return render(request, "article/detail.html", context)
 
-def create(request):
 
+@login_required(login_url='auth_user:login')
+@permission_required(perm='request.user.is_superuser', login_url='main:blogs')
+def create(request):
+    # if not request.user.is_superuser:
+    #     messages.error(request, "You must be logged in as admin to create an article")
+    #     return redirect("main:blogs")
     if request.method == "POST":
         New.objects.create(title=request.POST['title'], content=request.POST['content'])
         return HttpResponse(content="Article created successfully <a href='../'>Go home</a>")
@@ -54,6 +68,9 @@ def create(request):
     }
     return render(request, "article/create.html", context)
 
+
+@login_required(login_url='auth_user:login')
+@permission_required(perm='request.user.is_superuser', login_url='main:blogs')
 def create_form(request):
     form = NewsForm()
 

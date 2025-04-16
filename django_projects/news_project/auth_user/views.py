@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 
 # Create your views here.
 from django.contrib import auth
@@ -29,6 +29,7 @@ def login_views(request):
     if request.user.is_authenticated:
         messages.warning(request, "You are already logged in.")
         return redirect("main:blogs")
+
     form = MyAuthenticationForm()
     if request.method == "POST":
         form = MyAuthenticationForm(request, data=request.POST)
@@ -54,7 +55,7 @@ def logout_view(request):
     if request.method == "POST":
         logout(request)
         messages.success(request, "You are now logged out")
-        return redirect("/")
+        return redirect("main:blogs")
     context = {}
     return render(request, 'auth/logout.html', context)
 
