@@ -23,11 +23,31 @@
                         <h5 class="card-title">{{ recipe.title }}</h5>
                         <h6>Author: <em><a href="?q={{ recipe.author }}">{{ recipe.author }}</a></em></h6>
                         <p class="card-text">{{ recipe.description|slice:" :200" }}...</p>
+                        {% for tag in recipe.tags.all %}
+                            <mark><a href="?tag={{ tag }}">{{ tag }}</a></mark>
+                        {% endfor %}
                         <p class="card-text"><small class="text-body-secondary">Last updated {{ recipe.updated_at|timesince }} ago</small></p>
                         <a href="{% url 'recipe:detail' recipe.slug %}" class="btn btn-primary">About it</a>
                     </div>
                 </div>
             </div>
         {% endfor %}
+
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item {% if not recipes.has_previous %} disabled {% endif %}">
+                <a class="page-link" href="{% if recipes.has_previous %}?page={{ recipes.previous_page_number }}{% endif %}">Previous</a>
+              </li>
+              {% for page_num in recipes.paginator.page_range %}
+                <li class="page-item"><a class="page-link {% if recipes.number == page_num %} active {% endif %}" href="?page={{ page_num }}">{{ page_num }}</a></li>
+              {% endfor %}
+              <li class="page-item {% if not recipes.has_next %} disabled {% endif %}">
+                <a class="page-link" href="{% if recipes.has_next %}?page={{ recipes.next_page_number }}{% endif %}">Next</a>
+              </li>
+            </ul>
+        </nav>
+
+
     </div>
 {% endblock %}

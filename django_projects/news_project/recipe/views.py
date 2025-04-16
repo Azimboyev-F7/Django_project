@@ -4,16 +4,27 @@ from django.contrib import messages
 from .models import Recipe, Ingredient, Tag
 from django.contrib.auth.models import User, AbstractBaseUser, Permission
 from .forms import RecipeForm, IngredientCreateForm
+from django.core.paginator import Paginator
+
 # Create your views here.
 
 
 def recipe_list(request):
     recipes = Recipe.objects.all()
     query = request.GET.get('q')
+    tag = request.GET.get('tag')
+
+    paginator = Paginator(recipes, 1)
+    page_number = request.GET.get('page')
+    page_qs = paginator.get_page(page_number)
+
     if query:
         recipes = recipes.filter(author__username__icontains=query)
+
+    if tag:
+        recipes = recipes.filter(tags__title__icontains=tag)
     context = {
-        'recipes': recipes,
+        'recipes': page_qs,
     }
 
     return render(request, 'recipe/index.html', context)
